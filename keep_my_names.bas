@@ -10,7 +10,12 @@ Sub KeepMyNames()
 
         Debug.Print "===Slide@Index" + CStr(sld.SlideIndex) + "==="
         Set sldLayout = sld.CustomLayout
+        
+        ' Applies the layout to the slide again
+        ' Caution: This would overwrite changes you made to placeholders from the layout
+        sld.CustomLayout = sldLayout
 
+        
         phIndex = 1
 
         For Each ph In sldLayout.Shapes.Placeholders
