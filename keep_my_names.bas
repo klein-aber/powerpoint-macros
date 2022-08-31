@@ -12,7 +12,7 @@ Sub KeepMyNames()
         Set sldLayout = sld.CustomLayout
         
         ' Applies the layout to the slide again
-        ' Caution: This would overwrite changes you made to placeholders from the layout
+        ' Caution: This would overwrite changes you made to the layout placeholders made on the slide
         sld.CustomLayout = sldLayout
 
         
