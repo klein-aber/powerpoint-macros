@@ -21,6 +21,15 @@ Sub KeepMyNames()
         For Each ph In sldLayout.Shapes.Placeholders
             Debug.Print ph.Name
             sld.Shapes.Placeholders(phIndex).Name = ph.Name
+
+            ' Adjust order of elements. This is mainly required for the cover because it contains an image overlay 
+            ' Which has to mix placeholder and non-placeholders, which results in a wrong order of elements
+            If sld.Shapes.Placeholders(phIndex).Name = "cover_image" Then
+                sld.Shapes.Placeholders(phIndex).ZOrder msoSendToBack
+            ElseIf sld.Shapes.Placeholders(phIndex).Type = msoTextBox Then
+                sld.Shapes.Placeholders(phIndex).ZOrder msoBringToFront
+            End If
+            
             phIndex = phIndex + 1
         Next ph
 
